@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<style>
+input[type=text], input[type=password], input[type=number] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+ 
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* Set a style for all buttons */
+button {
+  /* background-color:rgb(90, 176, 216); */
+  color: white;
+  padding: 10px;
+  margin: 5px 0 3px 20px;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  opacity: 0.9;
+  margin-right: 6%;
+}
+.login{
+    float:center;
+    width:100%;
+}
+
+button:hover {
+  opacity:1;
+}
+.container {
+  padding: 20px;
+  
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #22b9ad;
+  margin: 2% auto 25% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 100%; /* Could be more or less, depending on screen size */
+  margin-right: 10%;
+  padding:4px;
+
+/* background-image: url('../assets/b5.jpg'); */
+
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+  
+}
+</style>
+</head>
+<body>
+    <form class="modal-content animate"  align="left" #form1="ngForm" novalidate>
+        <div class="container">
+            <h1> <label style="color:rgb(247, 239, 239);" >   Welcome {{adminname}} Dashboard </label> </h1>
+             <button type="button" class="btn btn-basic" (click)="GetUser()">USERS</button> 
+          <button type="button" class="btn " (click)="GetMentor()">MENTORS</button> 
+          <button type="button" class="btn" (click)="GetTechnology()">TECHNOLOGYS</button> 
+          <button type="button"class="btn" (click)="GetTraining()">TRAININGS </button>   
+          <button type="button"class="btn" (click)="GetPayment()">PAYMENTS </button>   
+          <button type="button"  style="color:rgb(221, 35, 35);  " class="btn" (click)="logout()">LOGOUT</button>
+      <!-- USER -->
+          <table *ngIf="userclick==1" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>User Name</th>
+                    <th>User EmailId</th>
+                    <th>User MobileNo</th>
+                   <th>User Password</th> 
+                    <th>User Active </th>
+                    <th>  </th>
+                    <th>  </th>
+                    
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of list">
+                <tr>
+                    <td>{{item.user_Id}}</td>
+                    <td>{{item.user_Name}}</td>
+                    <td>{{item.user_Email}}</td>
+                    <td>{{item.user_MobileNo}}</td>
+                    <td>{{item.user_Password}}</td> 
+                    <td>{{item.user_Active}}</td>
+                    <td><button class="btn" (click)="BlockUser(item.user_Id)"> Block/Unblock </button> </td>
+                    <td><button class="btn" (click)="DelUser(item.user_Id)"> Delete </button> </td>
+                  
+                </tr>
+            </tbody>
+        </table> 
+        <!-- MENTOR -->
+        <table *ngIf="mentorclick==1"class="table table-hover">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>FName</th>
+                  <!-- <th>LName</th> -->
+                  <!-- <th>Univ</th> -->
+                  <th>Mob</th>
+                  <!-- <th>Linked</th> -->
+                  <th>Exp</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Avaliable</th>
+                  <th>Tech</th>
+                  <th>EmailId</th>
+                  <!-- <th>Pass</th> -->
+                  <th>Active</th>
+                  <th>  </th>
+                    <th>  </th>
+                  
+              </tr>
+          </thead>
+          <tbody *ngFor="let item of mlist">
+              <tr>
+                  <td>{{item.mentor_Id}}</td>
+                  <td>{{item.mentor_FirstName}}</td>
+                  <td>{{item.mentor_MobileNo}}</td>
+                  <!-- <td>{{item.mentor_LinkedInUrl}}</td> -->
+                  <td>{{item.mentor_YearsOfExperience}}</td>
+                  <td>{{item.mentor_FromTimeSlot}}</td>
+                  <td>{{item.mentor_ToTimeSlot}}</td>
+                  <td>{{item.mentor_Avaliability}}</td>
+                  <td>{{item.mentor_PrimarySkill}}</td>
+                  <td>{{item.mentor_EmailId}}</td>
+                  <!-- <td>{{item.mentor_Password}}</td> -->
+                  <td>{{item.mentor_Active}}</td>
+                  <td><button class="btn" (click)="BlockMentor(item.mentor_Id)"> Block/Unblock </button> </td>
+                    <td><button class="btn" (click)="DelMentor(item.mentor_Id)"> Delete </button> </td>
+                
+              </tr>
+          </tbody>
+      </table> 
+      <!-- TECHNOLOGY  -->
+      <table *ngIf="technologyclick==1" class="table table-hover">
+          <thead>
+              <tr>
+                  <th>Technology ID</th>
+                  <th>Technology Name</th>
+                  <th>Technology TOC</th>
+                  <th>Fees</th>
+                 <th>Duration</th>    
+                 <th> </th>    
+                 <th> </th>     
+              </tr>
+          </thead>
+          <tbody *ngFor="let item of techlist">
+              <tr>
+                  <td>{{item.skill_Id}}</td>
+                  <td>{{item.skill_Name}}</td>
+                  <td>{{item.skill_TOC}}</td>
+                  <td>{{item.skill_Fees}}</td>
+                  <td>{{item.skill_Duration}}</td> 
+                 <td> <button class="btn" (click)="AddClick()"> Add </button>  </td>
+                  <td><button class="btn" (click)="DelTech(item.skill_Id)"> Delete </button> </td>
+              </tr>
+          </tbody>
+        </table> 
+      
+          <table *ngIf="addclick==1">
+          <tr>
+            <td>Technology Name</td>
+            <td><input type="text" name="" id=""[ngModelOptions]="{standalone: true}" [(ngModel)]="item.skill_Name"></td>
+          </tr>
+
+          <tr>
+          <td> TOC</td>
+          <td><input type="text" name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.skill_TOC"></td>
+          </tr>
+          <tr>
+          <td> Fees</td>
+          <td><input type="number" name="" id="" [ngModelOptions]="{standalone: true}"[(ngModel)]="item.skill_Fees"></td>
+          </tr>
+          <tr>
+          <td> Duration</td>
+          <td><input type="text" name="" id=""  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.skill_Duration"></td>
+          </tr>
+          <button class="btn" (click)="AddTech()"> SUBMIT </button>
+          </table>
+    
+
+      <!-- TRAININGS -->
+      <table *ngIf="trainingclick==1" class="table table-hover">
+          <thead>
+              <tr>
+                  <th>Training ID</th>
+                  <th>User Id</th>
+                  <th>Mentor Id</th>
+                  <th>StartDate</th>
+                 <th>EndDate</th> 
+                  <th>TimeSlot</th>
+                  <th>Status</th>
+                  <th>Progress</th>
+                  <th>Rating</th>
+                  <th> </th>
+                  
+              </tr>
+          </thead>
+          <tbody *ngFor="let item of tlist">
+              <tr>
+                  <td>{{item.training_Id}}</td>
+                  <td>{{item.user_Id}}</td>
+                  <td>{{item.mentor_Id}}</td>
+                  <td>{{item.training_StartDate}}</td>
+                  <td>{{item.training_EndDate}}</td> 
+                  <td>{{item.training_TimeSlot}}</td>
+                  <td>{{item.training_Status}}</td>
+                  <td>{{item.training_Progress}}</td>
+                  <td>{{item.training_Rating}}</td>
+                  <td><button class="btn" (click)="DelTrain(item.training_Id)"> Delete </button> </td> 
+                
+              </tr>
+          </tbody>
+      </table> 
+
+      <!-- PAYMENT -->
+      <table *ngIf="paymentclick==1" class="table table-hover">
+          <thead>
+              <tr>
+                  <th>Payment ID</th>
+                  <th>User ID</th>
+                  <th>Mentor ID</th>
+                  <th>Total Amount</th>
+                 <th>Technology</th> 
+                  <th>Mentor's Share</th>
+                                   
+              </tr>
+          </thead>
+          <tbody *ngFor="let item of plist">
+              <tr>
+                  <td>{{item.payment_Id}}</td>
+                  <td>{{item.user_Id}}</td>
+                  <td>{{item.mentor_Id}}</td>
+                  <td>{{item.payment_Amount}}</td>
+                  <td>{{item.skill_Name}}</td> 
+                  <td>{{item.mentor_Amount}}</td>          
+              </tr>
+          </tbody>
+      </table> 
+      
+          </div>
+        
+         <!-- {{techlist|json}}  -->
+      
+          </form>
+
+  </body>
+</html>

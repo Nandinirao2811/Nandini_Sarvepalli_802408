@@ -1,0 +1,76 @@
+<nav  class="navbar navbar-expand-lg navbar-light bg-secondary navbar-custom" >
+    <a  class="navbar-brand "style="color:aqua;"  href="#" >TECH_MAKERZ</a>
+    <button  class="navbar-toggler"  type="button"  data-toggle="collapse"  data-target="#navbarSupportedContent"  aria-controls="navbarSupportedContent"  aria-expanded="false"  aria-label="Toggle navigation">
+    <span  class="navbar-toggler-icon"> </span>
+    </button>
+  <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul  class="navbar-nav mr-auto">
+        <li  class="nav-item active">
+        <a  class="nav-link" style="color:white;"  href="techmakerz"> <i class="fa fa-home"></i> HOME<span  class="sr-only">(current)</span></a>
+        </li>
+        
+            <li class="nav-item" >
+             
+                <a class="btn  " style="color:white;"  data-toggle="collapse" routerLink="search" href="#multiCollapseExample1"  aria-expanded="false" aria-controls="multiCollapseExample1"><i class="fa fa-search"></i>SEARCH</a>
+                
+              </li>   
+             
+      </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li  class="nav-item" *ngIf="settok()==0" >
+                    <button type="button" style="color:white;"  routerLink="login" class="btn btn-default " data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false"> <i class="fa fa-sign-in"></i>
+                  LOGIN
+                  </button>
+                  
+                  <!-- <div  class="dropdown-menu" *ngIf="checkTok()==0" aria-labelledby="navbarDropdown">
+                  <a  class="dropdown-item" href="#" routerLink="login"> User/Mentor </a> -->
+                  
+                 
+                  <!-- <div  class="dropdown-divider"></div>
+                  <a  class="dropdown-item" routerLink="adminlogin">Admin  </a> -->
+                  
+                 
+                  <!-- </div> -->
+                  </li>
+                <li  class="nav-item dropdown " *ngIf="settok()==0" aria-labelledby="navbarDropdown">
+                    <button type="button" style="color:rgb(152, 206, 228);" class="btn btn-default dropdown-toggle mar nav-link dropdown-toggle mar " data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false"> 
+                  SIGNUP
+                  </button>
+                <div  class="dropdown-menu"  aria-labelledby="navbarDropdown">
+                <a  class="dropdown-item " routerLink="usersignup"> User </a>
+                <div  class="dropdown-divider"></div>
+                <a  class="dropdown-item" routerLink="mentorsignup"> Mentor  </a>
+                
+                </div>
+                </li> 
+
+                <li  class="nav-item dropdown" >
+                    <button type="button" style="color:rgb(152, 206, 228);" class="btn  dropdown-toggle  nav-link dropdown-toggle  " data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false"> 
+           COURSES OFFERED
+                  </button>
+                  <div  class="dropdown-menu"  aria-labelledby="navbarDropdown">
+                  <a  class="dropdown-item " href="#" > Angular JS </a>
+                  <div  class="dropdown-divider"></div>
+                  <a  class="dropdown-item" href="#"> Oracle </a>
+                  <div  class="dropdown-divider"></div>
+                  <a  class="dropdown-item" href="#"> Python & PHP </a>
+                  <div  class="dropdown-divider"></div>
+                  <a  class="dropdown-item" href="#"> Data Analytics </a>
+                  <div  class="dropdown-divider"></div>
+                  <a  class="dropdown-item" href="#"> DotNet </a>
+                 </div>
+                  </li>
+                  
+         
+       
+       
+        <li class="nav-item" *ngIf="settok()!=0">
+          <button type="button" style="color:rgb(152, 206, 228);"class="btn btn-default" (click)="logout()">EXIT </button>
+
+      </li>
+     </ul>
+  </div>
+  </nav>
+  
+    <router-outlet></router-outlet>
+  

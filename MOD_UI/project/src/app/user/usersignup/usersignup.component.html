@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+input[type=text], input[type=password] , input[type=number]{
+  width: 100%;
+  padding: 10px;
+  margin: 4px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  
+}
+.login{
+    float:center;
+    width:100%;
+}
+
+button:hover {
+  opacity:1;
+}
+.container {
+  padding: 20px;
+  
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #bae5d1;
+  margin: 3% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 25%; /* Could be more or less, depending on screen size */
+  margin-right: 3%;
+  /*background-image: url('../assets/q.jpg');*/
+}
+.mandatory{color:tomato;}
+</style>
+</head>
+<body>
+    <form class="modal-content animate"  #form1="ngForm" novalidate >
+    <div class="container">
+       
+        <span onclick="this.parentElement.style.display='none'" align="left"class="w3-bar-item w3-button  w3-small w3-right">X</span>
+            <h3 align="center"><b> USER SIGNUP </b></h3>
+            
+    <div>
+        <b> <label for="text" > <span class="mandatory"> *  </span> Name </label> </b> <br>
+  
+        <input type ="text" #email="ngModel" placeholder="Enter Name" name="emailId" [(ngModel)]="item.user_Name" required email /> <br>
+        <div  *ngIf="email.errors && (email.dirty || email.touched)">
+            <p  *ngIf="email.errors.required"> * Name is required </p> 
+        </div>
+      </div>
+ <div>
+<b> <label for="text" > <span class="mandatory"> *  </span>Email ID </label> </b> <br>
+<input type="text" #email="ngModel" placeholder="Enter Email" name="emailId" [(ngModel)]="item.user_Email" required email /> <br>
+<div  *ngIf="email.errors && (email.dirty || email.touched)">
+    <p  *ngIf="email.errors.required"> * Email is required </p> 
+    <p  *ngIf="email.errors.email"> * Email is not valid </p> 
+
+  </div>
+</div>
+
+<div>
+    <b> <label for="number"  > Mobile No </label> </b> <br>
+
+    <input type ="number" #email="ngModel" placeholder="Enter Mobile No" name="emailId" [(ngModel)]="item.user_MobileNo"  /> <br>
+    
+  </div>
+<div>
+<b> <label for="string" > <span class="mandatory"> *  </span>PassWord </label> </b><br>
+<input type ="password"  #password="ngModel" placeholder="Enter Password" name="password" [(ngModel)]="item.user_Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/> <br>
+<div  *ngIf="password.errors && (password.dirty || password.touched)">
+    <p  *ngIf="password.errors.required"> * Password is required </p> 
+    <p  *ngIf="password.errors.pattern"> PassWord Pattern doesnot match </p>
+  </div>
+</div>
+
+<!-- <div>
+<b> <label for="repassword"><span class="mandatory"> *  </span> Repeat Password </label> </b><br>
+<input type="password"  #repassword="ngModel" placeholder="Repeat Password" name="psw-repeat" [(ngModel)]="item.User_Password"
+confirmPasswordValidator="password" required  /> <br> 
+<div  *ngIf="repassword.errors && (repassword.dirty || repassword.touched)">
+    <p  *ngIf="repassword.errors.required"> * Confirm Password is required </p> 
+    <p *ngIf= "repassword.touched && repassword.errors?.notEqual && !repassword.errors?.required"> 
+      Password and Repeat Password does not match  </p>
+  </div> 
+</div> -->
+
+<input type="checkbox" checked="checked" name="remember"> Remember me
+<button  (click) ="Add()"  >SIGNUP</button>
+
+    </div>
+    
+</form>
+</body>
+</html>
+
+
+<router-outlet></router-outlet>
+

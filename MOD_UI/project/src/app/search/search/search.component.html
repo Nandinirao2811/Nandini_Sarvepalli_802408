@@ -1,0 +1,81 @@
+
+<div class="row-sm-0">
+        <div class="row">
+            
+            
+            <div class="card card-body" >
+      <section class="search-sec">
+          <div class="container">
+              
+              <form action="#" method="post" novalidate="novalidate" >
+                    
+                  <div class="col">
+                      <div class="col">
+                          <div class="col">
+                              <div class="col-lg-11 col-md-3 col-sm-12 p-0">
+                                  <label>Course Start_Time </label>
+                                  <input type="text" class="form-control search-slt" [ngModelOptions]="{standalone: true}"  [(ngModel)]="fromTimeslot" placeholder="Enter Start_Time ">
+                              </div>
+                              <br>
+                              <div class="col-lg-11 col-md-3 col-sm-12 p-0">
+                                  <label>Course End_Time</label>
+                                  <input type="text" class="form-control search-slt" [ngModelOptions]="{standalone: true}" [(ngModel)]="toTimeslot" placeholder="Enter End_Time ">
+                              </div>
+                              <br>
+                              <div class="col-lg-11 col-md-3 col-sm-12 p-0">
+                                  <label>Courses Offered </label>
+                                  <select class="form-control search-slt" id="exampleFormControlSelect1" [ngModelOptions]="{standalone: true}" [(ngModel)]="skill"aria-placeholder="Course">
+                                      
+                                      <option>Angular JS</option>
+                                      <option>Oracle</option>
+                                      <option>Python & PHP</option>
+                                      <option>Data Analytics</option>
+                                      <option>DotNet</option>
+                                      
+                                  </select>
+                              </div>
+                              <br>
+                              <div class="col-lg-11 col-md-11 col-sm-12 p-0"  style= "margin-left: 364px;">
+                               
+                                   &nbsp;&nbsp;&nbsp;
+                                  <button type="button"   class="btn btn-info" (click)="Search()" >Search Here</button>
+                                 
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </section>
+            </div>
+          </div>
+      
+        
+      </div>
+      <div class="card-deck">
+            <div *ngFor="let data of list ">
+            <!-- <div class="card-group grid-container" > -->
+                    
+                    <div class="card col-sm-12" style="width:400px" src="..\assets\icon.png" >
+                      <!-- <img class="card-img-top " alt="Card image" style="width:100%;"> -->
+                      <img class="card-img-top" src="..\assets\icon.png"  alt="Card image" style="width:50%; margin:auto;">
+                      <div class="card-body">
+                        <h4 class="card-title">Name: {{data.mentor_FirstName}} {{data.mentor_LastName}}</h4>
+                        <p class="card-text">Technology: {{data.mentor_PrimarySkill}}
+                            <br>Experience: {{data.mentor_YearsOfExperience}} Years
+                            <br>Contact No: {{data.mentor_MobileNo}}
+                            <br>Email Id: {{data.mentor_EmailId}} </p>
+                         <!-- Rating :  <span class="fa fa-star checked"></span> 
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span> 
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span> 
+            <br> -->
+            
+                        <!-- <a href="#" class="btn btn-primary" (click)="subMentor()"> Subscribe Mentor </a> -->
+                      </div>
+                    <!-- </div> -->
+                    </div>
+            </div>
+          
+      <router-outlet> </router-outlet>

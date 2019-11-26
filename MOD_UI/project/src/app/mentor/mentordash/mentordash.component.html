@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<style>
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+ 
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* Set a style for all buttons */
+button {
+  /* background-color:rgb(90, 176, 216); */
+  color: white;
+  padding: 10px;
+  margin: 5px 0 3px 20px;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  opacity: 0.9;
+  margin-right: 6%;
+}
+.login{
+    float:center;
+    width:100%;
+}
+
+button:hover {
+  opacity:1;
+}
+.container {
+  padding: 20px;
+  
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #2053a5;
+  margin: 2% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 90%; /* Could be more or less, depending on screen size */
+  margin-right: 3%;
+ /* background-image: url('../assets/q.jpg');*/
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+</style>
+</head>
+<body>
+    <form class="modal-content animate"  align="left" #form1="ngForm" novalidate>
+        <div class="container">
+          <h3> <label style="color:rgb(247, 239, 239);" >  <b>   MENTOR DASHBOARD </b></label> </h3>
+ <h4>   Welcome {{item.mentor_FirstName}} {{item.mentor_LastName}},  You are Successfully Logged In  </h4>
+ 
+          <button type="button" class="btn" (click)="MentorCurTrainings()">CURRENT TRAININGS</button> 
+          <!-- <button type="button" class="btn">COMPLETED TRAININGS</button> 
+          <button type="button" class="btn"> NOTIFICATIONS</button>  -->
+          <button type="button"  class="btn" (click)="UpdateMClick()">UPDATE PASSWORD </button> 
+          <button type="button" style="color:rgb(221, 35, 35);" class="btn " (click)="logout()">LOGOUT</button>
+        <br>
+          <table *ngIf="updatempassclick==1">
+          <tr>
+           Mentor EmailId
+            <input type="text" name="" id=""[ngModelOptions]="{standalone: true}" [(ngModel)]="mentor_EmailId">
+          </tr>
+          <tr>
+         New password
+          <input type="text" name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="mentor_Password">
+          </tr>
+          <tr>
+          <td> <button type="button" class="btn btn-info"(click)="UpdateMentor()"> RESET</button> </td>
+          </tr>
+          </table>
+
+          <table *ngIf="curtrainingclick==1" class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Training ID</th>
+                      <!-- <th>User Id</th> -->
+                      <th>Mentor Id</th>
+                      <th>StartDate</th>
+                     <th>EndDate</th> 
+                      <th>TimeSlot</th>
+                      <th>Status</th>
+                      <th>Progress</th>
+                      <!-- <th>Rating</th> -->
+                      
+                      
+                  </tr>
+              </thead>
+              <tbody *ngFor="let item of lists">
+                  <tr>
+                      <td>{{item.training_Id}}</td>
+                      <!-- <td>{{item.user_Id}}</td> -->
+                      <td>{{item.mentor_Id}}</td>
+                      <td>{{item.training_StartDate}}</td>
+                      <td>{{item.training_EndDate}}</td> 
+                      <td>{{item.training_TimeSlot}}</td>
+                      <td>{{item.training_Status}}</td>
+                      <td>{{item.training_Progress}}</td>
+                      <!-- <td>{{item.training_Rating}}</td> -->
+                                          
+                  </tr>
+              </tbody>
+          </table> 
+          </div>
+          </form>
+<!-- {{lists|json}} -->
+  </body>
+</html>

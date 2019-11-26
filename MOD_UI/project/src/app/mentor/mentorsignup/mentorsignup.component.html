@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+input[type=text], input[type=password], input[type=number] {
+  width: 100%;
+  padding: 10px;
+  margin: 4px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: white;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  
+}
+.login{
+    float:center;
+    width:100%;
+}
+
+button:hover {
+  opacity:1;
+}
+.container {
+  padding: 20px;
+  
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #bae5d1;
+  margin: 3% auto 25% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 32%; /* Could be more or less, depending on screen size */
+  margin-right: 3%;
+  /*background-image: url('../assets/q.jpg');*/
+}
+</style>
+</head>
+<body>
+    <form class="modal-content animate"  novalidate>
+    <div class="container">
+        <span onclick="this.parentElement.style.display='none'" align="left"class="w3-bar-item w3-button  w3-small w3-right">X</span>
+            <h3 align="center"><b> MENTOR SIGNUP </b></h3>
+<div>
+<label for="name" > <b> First Name </b> </label> <br>
+<input type ="text" #name="ngModel" placeholder="Enter First Name" name="name" [(ngModel)]="item.mentor_FirstName" required  /> <br>
+<div  *ngIf="name.errors && (name.dirty || name.touched)">
+    <p  *ngIf="name.errors.required"> * Name is required </p> 
+
+  </div>
+
+</div>
+
+<div>
+  <label for="name" > <b> Last Name </b> </label> <br>
+  <input type ="text" #name="ngModel" placeholder="Enter Last Name" name="name" [(ngModel)]="item.mentor_LastName" required  /> <br>
+  <div  *ngIf="name.errors && (name.dirty || name.touched)">
+      <p  *ngIf="name.errors.required"> * Name is required </p> 
+  
+    </div>
+  
+  </div>
+
+  <div>
+    <label for="univ"><b> University </b> </label> <br>
+    <input type ="text" #univ="ngModel" placeholder="Enter University Name" name="University" [(ngModel)]="item.mentor_University"required  /> <br>
+    <div  *ngIf="univ.errors && (univ.dirty || univ.touched)">
+        <p  *ngIf="univ.errors.required"> * University is required </p> 
+    </div>
+    </div>
+
+    <div>
+      <label for="mobile"><b> Mobile No </b> </label> <br>
+      <input type ="number" #univ="ngModel" placeholder="Enter Mobile No" name="MobileNo" [(ngModel)]="item.mentor_MobileNo"required  /> <br>
+  
+      </div>
+
+      <div>
+        <label for="LinkedIn"><b> LinkedIn Url </b> </label> <br>
+        <input type ="text" #univ="ngModel" placeholder="Enter LinkedIn Url" name="LinkedIn" [(ngModel)]="item.mentor_LinkedInUrl"required  /> <br>
+    
+         </div>
+         <!--
+        <div class = "form-group">
+          <label for="mentorYOE" >  <b>Years Of Experience  </b> </label>
+          <select type="number" id="mentorYOE" name="mentorYOE1" [(ngModel)]="item.Mentor_YearsOfExperience" class="form-control">
+              <option disabled>--Select--</option>
+              <option> 1</option>
+              <option>2 </option>
+              <option>3 </option>
+              <option>4 </option>
+             <option *ngFor= " let year of mentorYOE" [value]="year.name">   
+              {{year.name}}
+          </option> -->
+          <!-- </select>
+          
+          </div> --> 
+          <div>
+            <label for="YearsOfExperience"><b> Years Of Experience </b> </label> <br>
+            <input type ="number" #univ="ngModel" placeholder="Enter Years of Experience" name="YearsOfExperience" [(ngModel)]="item.mentor_YearsOfExperience"required  /> <br>
+          </div>
+
+          <div>
+            <label for="FromTimeslot"><b> Start TimeSlot </b> </label> <br>
+            <input type ="text" #univ="ngModel" placeholder="Enter Start TimeSlot " name="FromTimeSlot" [(ngModel)]="item.mentor_FromTimeSlot"required  /> <br>
+        
+            </div>
+            <div>
+              <label for="ToTimeSlot"><b> End TimeSlot</b> </label> <br>
+              <input type ="text" #univ="ngModel" placeholder="Enter End TimeSlot" name="ToTimeSlot" [(ngModel)]="item.mentor_ToTimeSlot"required  /> <br>
+          
+              </div>
+              <div class = "form-group">
+                <label for="PrimarySkill" > <b> Primary Skill </b> </label>
+                <select type="text" id="PrimarySkill" name="PrimarySkill" [(ngModel)]="item.mentor_PrimarySkill" class="form-control">
+                    <!-- <option disabled>--Select--</option>
+                  <option *ngFor= " let area of mentorAOI" [value]="area.name">  
+                   {{area.name}} --> 
+                   <option>Angular JS</option>
+                   <option>Node JS & Express JS</option>
+                   <option>Oracle</option>
+                   <option>Python & PHP</option>
+                   <option>Data Analytics</option>
+                   <option>DotNet</option>
+                
+                </select>
+                
+                </div>
+<div>
+  <label for="email1" > <b> Email ID </b> </label> <br>
+    <input type ="text" #email1="ngModel" placeholder="Enter Email" name="emailID"  [(ngModel)]="item.mentor_EmailId" required email /> <br>
+    <div  *ngIf="email1.errors && (email1.dirty || email1.touched)">
+        <p  *ngIf="email1.errors.required"> * Email ID is required </p> 
+        <p  *ngIf="email1.errors.email"> * Email ID is not valid </p>
+      </div>
+  </div>
+
+    <div>
+        <b> <label for="password" > Create PassWord </label> </b><br>
+        <input type ="password"  #password="ngModel" placeholder="Enter Password" name="password" [(ngModel)]="item.mentor_Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/> <br>
+        <div  *ngIf="password.errors && (password.dirty || password.touched)">
+            <p  *ngIf="password.errors.required"> * Password is required </p> 
+            <p  *ngIf="password.errors.pattern"> PassWord Pattern doesnot match </p>
+          </div>
+        </div>
+        
+        <!-- <div>
+        <b> <label for="repassword"> Repeat Password </label> </b><br>
+        <input type="password" #repassword="ngModel" placeholder="Repeat Password" name="psw-repeat" [(ngModel)]="mentorRepassword"
+        confirmPasswordValidator="password" required  /> <br> 
+        <div  *ngIf="repassword.errors && (repassword.dirty || repassword.touched)">
+            <p  *ngIf="repassword.errors.required"> * Confirm Password is required </p> 
+            <p *ngIf= "repassword.touched && repassword.errors?.notEqual && !repassword.errors?.required"> 
+              Password and Repeat Password does not match  </p>
+          </div>
+        </div> -->
+
+     
+
+<!-- <div>
+    <b>Date Of Birth</b> 
+    <input type="datetime-local" class="form-control search-slt" placeholder="Date_Of_Birth" name="DOB" [(ngModel)]="mentorDOB" /> <br>
+    </div> -->
+
+ 
+
+
+    
+   
+<input type="checkbox" checked="checked" name="remember"> Remember me
+<button type="submit"  (click) = Add()>SIGNUP</button>
+
+    </div>
+   
+    <!-- {{item|json}} -->
+</form>
+</body>
+</html>
+
+
+<router-outlet></router-outlet>
+

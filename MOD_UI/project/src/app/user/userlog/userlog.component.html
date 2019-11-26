@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<style>
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  align-content: center;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* Set a style for all buttons */
+button {
+  background-color:rgb(90, 176, 216);
+  color: white;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  
+}
+.login{
+    float:center;
+    width:100%;
+}
+
+button:hover {
+  opacity:1;
+}
+.container {
+  padding: 16px;
+  
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #c8d5ee;
+  margin: 3% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+  margin-right: 3%;
+ /* background-image: url('../assets/q.jpg');*/
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+.mandatory{color:red;}
+</style>
+</head>
+<body>
+    <form class="modal-content animate">
+    <div class="container">
+        <div class="form-group">
+        <span onclick="this.parentElement.style.display='none'" align="left"class="w3-bar-item w3-button  w3-small w3-right">X</span>
+           <h3 align="center">  <b>USER or MENTOR LOGIN</b></h3> 
+
+        </div>
+        <div class="form-group">
+<label for="email" > <span class="mandatory"> *  </span> <b>  Email ID </b> </label>         
+<input type ="text" class="form-control" placeholder="User Name" name ="uname" [(ngModel)]="email" required  /> <br>
+
+ 
+
+</div>
+ 
+<div class="form-group">
+<label for="password"><span class="mandatory"> *  </span> <b> Password </b>   </label>
+<input type ="password"  class="form-control" placeholder="Password" name ="pass"  [(ngModel)]="pwd" required /> <br>
+
+ </div>
+<input type="checkbox" checked="checked" name="remember"> Remember me
+<button  type="button" (click)="Login()" >LOGIN</button>
+
+</div>
+   
+    
+</form>
+</body>
+
+</html> 
+
+
+
+  
+<router-outlet></router-outlet> 
